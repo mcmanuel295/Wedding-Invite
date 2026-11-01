@@ -151,12 +151,58 @@
   });
 })();
 
-// Guestbook: adds the message to the list on the page. Save it to your backend where marked.
+// Guestbook: shows messages in pages. "Load more" button or scrolling loads the next page.
+// Placeholder entries below; replace them with messages loaded from your backend.
 (function () {
   const form = document.getElementById("guestbook-form");
-  if (!form) return;
-  const status = document.getElementById("guestbook-status");
   const list = document.getElementById("guestbook-list");
+  if (!form || !list) return;
+
+  const status = document.getElementById("guestbook-status");
+  const moreBtn = document.getElementById("load-more");
+  const sentinel = document.getElementById("guestbook-sentinel");
+  const PAGE_SIZE = 5;
+
+  const entries = Array.from({ length: 12 }, (_, i) => ({
+    name: "Sample Guest " + (i + 1),
+    message: "Placeholder message " + (i + 1) + ". Replace with a real guest message.",
+  }));
+  let shown = 0;
+
+  function makeItem(entry) {
+    const item = document.createElement("li");
+    const who = document.createElement("p");
+    who.className = "entry-name";
+    who.textContent = entry.name;
+    const text = document.createElement("p");
+    text.className = "entry-text";
+    text.textContent = entry.message;
+    item.append(who, text);
+    return item;
+  }
+
+  function updateControls() {
+    moreBtn.hidden = shown >= entries.length;
+  }
+
+  function loadMore() {
+    const next = entries.slice(shown, shown + PAGE_SIZE);
+    next.forEach((entry) => list.appendChild(makeItem(entry)));
+    shown += next.length;
+    updateControls();
+  }
+
+  moreBtn.addEventListener("click", loadMore);
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (items) => {
+        if (items[0].isIntersecting && shown < entries.length) loadMore();
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(sentinel);
+  }
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -168,24 +214,56 @@
       form.message.focus();
       return;
     }
-    const name = form.name.value.trim() || "A guest";
+    const entry = { name: form.name.value.trim() || "A guest", message };
 
-    // TODO: send { name, message } to your backend so it is saved for everyone.
+    // TODO: send entry to your backend so it is saved for everyone.
 
-    const empty = list.querySelector(".guestbook-empty");
-    if (empty) empty.remove();
-
-    const item = document.createElement("li");
-    const who = document.createElement("p");
-    who.className = "entry-name";
-    who.textContent = name;
-    const text = document.createElement("p");
-    text.className = "entry-text";
-    text.textContent = message;
-    item.append(who, text);
-    list.prepend(item);
+    entries.unshift(entry);
+    list.prepend(makeItem(entry));
+    shown += 1;
+    updateControls();
 
     status.textContent = "Thank you for your message.";
     form.reset();
   });
+
+  loadMore();
+})();
+
+// Quote slider: slides left to right with buttons, dots, or swipe.
+(function () {
+  const track = document.getElementById("quote-track");
+  const prev = document.getElementById("quote-prev");
+  const next = document.getElementById("quote-next");
+  const dotsWrap = document.getElementById("slider-dots");
+  if (!track || !prev || !next || !dotsWrap) return;
+
+  const slides = Array.from(track.children);
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.setAttribute("aria-label", "Go to quote " + (i + 1));
+    dot.addEventListener("click", () => track.scrollTo({ left: i * track.clientWidth, behavior: "smooth" }));
+    dotsWrap.appendChild(dot);
+  });
+
+  function currentIndex() {
+    return Math.round(track.scrollLeft / track.clientWidth);
+  }
+
+  function updateDots() {
+    const index = currentIndex();
+    Array.from(dotsWrap.children).forEach((dot, i) => {
+      dot.setAttribute("aria-current", String(i === index));
+    });
+    prev.disabled = index <= 0;
+    next.disabled = index >= slides.length - 1;
+  }
+
+  prev.addEventListener("click", () => track.scrollBy({ left: -track.clientWidth, behavior: "smooth" }));
+  next.addEventListener("click", () => track.scrollBy({ left: track.clientWidth, behavior: "smooth" }));
+  track.addEventListener("scroll", () => window.requestAnimationFrame(updateDots), { passive: true });
+  window.addEventListener("resize", updateDots);
+  updateDots();
 })();
