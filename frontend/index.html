@@ -67,6 +67,52 @@
     </div>
   </section>
 
+  <section class="section quotes" id="quotes">
+    <p class="eyebrow">Words of Love</p>
+    <h2>Scripture on love and marriage</h2>
+    <div class="quote-slider">
+      <div class="quote-track" id="quote-track">
+      <blockquote class="quote-card">
+        <p>&ldquo;Therefore shall a man leave his father and his mother, and shall cleave unto his wife: and they shall be one flesh.&rdquo;</p>
+        <cite>Genesis 2:24</cite>
+      </blockquote>
+      <blockquote class="quote-card">
+        <p>&ldquo;Many waters cannot quench love, neither can the floods drown it.&rdquo;</p>
+        <cite>Song of Solomon 8:7</cite>
+      </blockquote>
+      <blockquote class="quote-card">
+        <p>&ldquo;Whoso findeth a wife findeth a good thing, and obtaineth favour of the LORD.&rdquo;</p>
+        <cite>Proverbs 18:22</cite>
+      </blockquote>
+      <blockquote class="quote-card">
+        <p>&ldquo;And above all these things put on charity, which is the bond of perfectness.&rdquo;</p>
+        <cite>Colossians 3:14</cite>
+      </blockquote>
+      <blockquote class="quote-card">
+        <p>&ldquo;Whither thou goest, I will go; and where thou lodgest, I will lodge: thy people shall be my people, and thy God my God.&rdquo;</p>
+        <cite>Ruth 1:16</cite>
+      </blockquote>
+      <blockquote class="quote-card">
+        <p>&ldquo;Husbands, love your wives, even as Christ also loved the church, and gave himself for it.&rdquo;</p>
+        <cite>Ephesians 5:25</cite>
+      </blockquote>
+      <blockquote class="quote-card">
+        <p>&ldquo;We love him, because he first loved us.&rdquo;</p>
+        <cite>1 John 4:19</cite>
+      </blockquote>
+      <blockquote class="quote-card">
+        <p>&ldquo;And if one prevail against him, two shall withstand him; and a threefold cord is not quickly broken.&rdquo;</p>
+        <cite>Ecclesiastes 4:12</cite>
+      </blockquote>
+      </div>
+      <div class="slider-controls">
+        <button type="button" class="slider-btn" id="quote-prev" aria-label="Previous quote">&#8592;</button>
+        <div class="slider-dots" id="slider-dots"></div>
+        <button type="button" class="slider-btn" id="quote-next" aria-label="Next quote">&#8594;</button>
+      </div>
+    </div>
+  </section>
+
   <section class="section details" id="details">
     <p class="eyebrow">The Details</p>
     <h2>Join us</h2>
@@ -219,13 +265,14 @@
       <p class="form-status" id="guestbook-status" role="status"></p>
     </form>
 
-    <ul class="guestbook-list" id="guestbook-list">
-      <li class="guestbook-empty">Messages will appear here once they are posted.</li>
-    </ul>
+    <ul class="guestbook-list" id="guestbook-list"></ul>
+    <button type="button" class="btn load-more" id="load-more" hidden>Load more messages</button>
+    <div id="guestbook-sentinel" aria-hidden="true"></div>
   </section>
 
   <footer class="footer">
     <p>Name &amp; Name &middot; 00.00.0000</p>
+    <p class="credit">Designed by <a href="admin.html">Emmanuel Ogbu</a></p>
   </footer>
 
   <script src="script.js"></script>
