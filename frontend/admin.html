@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Sign In | Wedding Invitation</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="nav">
+    <a href="index.html" class="nav-logo">N &amp; N</a>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-card">
+      <p class="eyebrow">Admin</p>
+      <h1>Sign in</h1>
+      <form id="admin-login-form" class="admin-form" novalidate>
+        <label>
+          Email
+          <input type="email" name="email" placeholder="admin@example.com" required autocomplete="username">
+        </label>
+        <label>
+          Password
+          <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
+        </label>
+        <button type="submit" class="btn">Sign in</button>
+        <p class="form-status" id="admin-status" role="status"></p>
+      </form>
+      <p class="admin-note">Sign-in is not connected to a backend yet.</p>
+      <a href="index.html" class="admin-back">Back to the invitation</a>
+    </div>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
