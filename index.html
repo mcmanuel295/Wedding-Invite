@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Names & Names | Wedding Invitation</title>
+  <meta name="description" content="Join us as we celebrate our wedding.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="nav">
+    <a href="#top" class="nav-logo">N &amp; N</a>
+    <nav class="nav-links">
+      <a href="#story">Our Story</a>
+      <a href="#details">Details</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#rsvp">RSVP</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="top">
+    <p class="eyebrow">Together with their families</p>
+    <h1 class="hero-names">Name <span>&amp;</span> Name</h1>
+    <p class="hero-date">Saturday, 00 Month 0000</p>
+    <p class="hero-location">Venue Name, City</p>
+    <a href="#rsvp" class="btn">Kindly Respond</a>
+    <div class="scroll-cue" aria-hidden="true"></div>
+  </section>
+
+  <section class="section countdown-section">
+    <p class="eyebrow">Counting down to the day</p>
+    <div class="countdown" id="countdown" data-date="2027-06-12T14:00:00">
+      <div><span id="days">00</span><small>Days</small></div>
+      <div><span id="hours">00</span><small>Hours</small></div>
+      <div><span id="minutes">00</span><small>Minutes</small></div>
+      <div><span id="seconds">00</span><small>Seconds</small></div>
+    </div>
+  </section>
+
+  <section class="section story" id="story">
+    <p class="eyebrow">Our Story</p>
+    <h2>How it all began</h2>
+    <p>
+      Replace this paragraph with the story of how you met, what brought you together,
+      and what this day means to you. Keep it short and personal.
+    </p>
+  </section>
+
+  <section class="section details" id="details">
+    <p class="eyebrow">The Details</p>
+    <h2>Join us</h2>
+    <div class="detail-grid">
+      <article class="detail-card">
+        <h3>Ceremony</h3>
+        <p>00:00 PM</p>
+        <p>Venue Name<br>Street Address, City</p>
+      </article>
+      <article class="detail-card">
+        <h3>Reception</h3>
+        <p>00:00 PM</p>
+        <p>Venue Name<br>Street Address, City</p>
+      </article>
+      <article class="detail-card">
+        <h3>Dress Code</h3>
+        <p>Formal or Traditional</p>
+        <p>Please avoid white</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section gallery" id="gallery">
+    <p class="eyebrow">Moments</p>
+    <h2>Gallery</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item" role="img" aria-label="Placeholder photo 1"></div>
+      <div class="gallery-item" role="img" aria-label="Placeholder photo 2"></div>
+      <div class="gallery-item" role="img" aria-label="Placeholder photo 3"></div>
+      <div class="gallery-item" role="img" aria-label="Placeholder photo 4"></div>
+      <div class="gallery-item" role="img" aria-label="Placeholder photo 5"></div>
+      <div class="gallery-item" role="img" aria-label="Placeholder photo 6"></div>
+    </div>
+  </section>
+
+  <section class="section rsvp" id="rsvp">
+    <p class="eyebrow">Kindly Respond</p>
+    <h2>Will you be joining us?</h2>
+    <form id="rsvp-form" class="rsvp-form" novalidate>
+      <label>
+        Full name
+        <input type="text" name="name" required>
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" required>
+      </label>
+      <label>
+        Attending?
+        <select name="attending" required>
+          <option value="">Select one</option>
+          <option value="yes">Joyfully accepts</option>
+          <option value="no">Regretfully declines</option>
+        </select>
+      </label>
+      <label>
+        Number of guests
+        <input type="number" name="guests" min="1" max="10" value="1">
+      </label>
+      <label>
+        Message for the couple
+        <textarea name="message" rows="4"></textarea>
+      </label>
+      <button type="submit" class="btn">Send RSVP</button>
+      <p class="form-status" id="form-status" role="status"></p>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <p>Name &amp; Name &middot; 00.00.0000</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
